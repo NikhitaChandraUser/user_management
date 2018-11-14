@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 import argparse
 from mgmt import *
@@ -111,20 +111,20 @@ def parse_args():
 
     # HANDLING GET OPERATIONS AS SEPARATE COMMANDS
     get_ops = subparser.add_parser('get', help='Gets User, User groups')
-    get_ops.add_argument('-g', '--get', action="store_true", default=False, help='Get details Flag')
+    #get_ops.add_argument('-g', '--get', action="store_true", default=False, help='Get details Flag')
     get_ops.add_argument("-o", "--output_type", default="xls", help="Output type, either xls or json")
     get_ops.add_argument("-f", "--filename", default="users_and_groups",
                          help="Either the name of the json file or root of Excel file names.")
 
     # HANDLING SYNC FROM EXCEL OPERATIONS AS SEPARATE COMMANDS
     sync_ops = subparser.add_parser('sync_excel', help='Syncs user and groups from an excel file')
-    sync_ops.add_argument('-s', '--sync_excel', action="store_true", default=False, help='Sync details flag')
+    #sync_ops.add_argument('-s', '--sync_excel', action="store_true", default=False, help='Sync details flag')
     sync_ops.add_argument("--purge", action="store_true", help="Is set, will delete users not being synced.")
     sync_ops.add_argument("-f", "--filename", help="Either the name of the Excel file name with the users and groups.")
 
     # HANDLING TRANSFER OWNERSHIP OPERATIONS AS SEPARATE COMMANDS
     trans_owner_ops = subparser.add_parser('transfer_ownership', help='Transfers ownership of content from one user to other')
-    trans_owner_ops.add_argument('-t_o', '--transfer_ownership', action="store_true", default=False, help='Transfer ownership details flag')
+    #trans_owner_ops.add_argument('-t_o', '--transfer_ownership', action="store_true", default=False, help='Transfer ownership details flag')
     trans_owner_ops.add_argument("--from_user", help="Name of the user to transfer content from.")
     trans_owner_ops.add_argument("--to_user", help="Name of the user to transfer content to.")
     #does not have disable_ssl
