@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from delete_ugs import DelUser
 from get_users import GetUsers
 from sync_from_excel import SyncExcel
