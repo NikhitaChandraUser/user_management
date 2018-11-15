@@ -5,7 +5,7 @@ import unittest
 sys.path.insert(0, join(abspath(dirname(dirname(__file__))), 'mgmt'))
 from tsUserGroupApi import UsersAndGroups, User, Group, SyncUserAndGroups, Visibility, Privileges, SetGroupPrivilegesAPI
 
-TS_URL = "https://10.85.78.102"  # Test ThoughtSpot instance.
+TS_URL = "https://test_ts"  # Test ThoughtSpot instance.
 TS_USER = "tsadmin"
 TS_PASSWORD = "admin"
 
