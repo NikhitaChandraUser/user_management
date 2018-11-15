@@ -114,7 +114,7 @@ def parse_args():
 
     # HANDLING VALIDATE JSON OPERATIONS AS SEPARATE COMMANDS
     validate_ops = subparser.add_parser('validate_json', help='Syncs user and groups from an excel file')
-    validate_ops.add_argument('-v', '--validate_json', action="store_true", default=False, help='Validate JSON details flag')
+    #validate_ops.add_argument('-v', '--validate_json', action="store_true", default=False, help='Validate JSON details flag')
     validate_ops.add_argument("-f", "--filename", help="Name of the json file to be validated.")
 
     args = parser.parse_args()
