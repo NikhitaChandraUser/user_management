@@ -26,23 +26,23 @@ def main():
     print(args)
 
     if args.command == 'delete':
-        delete_user = DelUser()
-        if delete_user.valid_args(args):
+        delete_user_groups = DeleteUserGroups()
+        if delete_user_groups.valid_args(args):
             sync = SyncUserAndGroups(tsurl=args.ts_url, username=args.username, password=args.password,
                                      disable_ssl=args.disable_ssl)
             if args.users is not None:
-                delete_user.delete_users(args, sync)
+                delete_user_groups.delete_users(args, sync)
             if args.user_file is not None:
-                delete_user.delete_users_from_file(args, sync)
+                delete_user_groups.delete_users_from_file(args, sync)
             if args.groups is not None:
-                delete_user.delete_groups(args, sync)
+                delete_user_groups.delete_groups(args, sync)
             if args.group_file is not None:
-                delete_user.delete_groups_from_file(args, sync)
+                delete_user_groups.delete_groups_from_file(args, sync)
 
     elif args.command == 'get':
         # Synchronize users and groups with ThoughtSpot from a properly formatted Excel file.
-        sync_excel = SyncExcel()
-        if sync_excel.valid_args(args):
+        sync_from_excel = SyncFromExcel()
+        if sync_from_excel.valid_args(args):
             uags = UGXLSReader().read_from_excel(args.filename)
             sync = SyncUserAndGroups(
                 tsurl=args.ts_url,
@@ -112,8 +112,7 @@ def parse_args():
     trans_owner_ops.add_argument("--to_user", help="Name of the user to transfer content to.")
 
     # HANDLING VALIDATE JSON OPERATIONS AS SEPARATE COMMANDS
-    validate_ops = subparser.add_parser('validate_json', help='Syncs user and groups from an excel file')
-    #validate_ops.add_argument('-v', '--validate_json', action="store_true", default=False, help='Validate JSON details flag')
+    validate_ops = subparser.add_parser('validate_json', help='Validates a JSON')
     validate_ops.add_argument("-f", "--filename", help="Name of the json file to be validated.")
 
     args = parser.parse_args()
