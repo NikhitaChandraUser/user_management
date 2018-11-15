@@ -76,27 +76,13 @@ def parse_args():
     Parses the arguments from the command line.
     :returns: The arguments object.
     """
-    # parser = argparse.ArgumentParser()
-    # group = parser.add_mutually_exclusive_group()
-    # group.add_argument("-d", "--delete",help="Delete user, user group", action="store_true")
-    # group.add_argument("-g", "--get", help="Delete user, user group", action="store_true")
-    # parser.add_argument("-t", "--ts_url",help="URL to ThoughtSpot, e.g. https://myserver")
-    # parser.add_argument("-u", "--username",default='tsadmin',help="Name of the user to log in as.")
-    # parser.add_argument("-p", "--password",default='admin',help="Password for login of the user to log in as.")
-    # parser.add_argument("--disable_ssl", action="store_true",help="Will ignore SSL errors.")
-    # parser.add_argument("--users",help="List of comma separated users.  Use quotes if there are spaces.")
-    # parser.add_argument("--groups", help="List of comma separated groups.  Use quotes if there are spaces.")
-    # parser.add_argument("--user_file",help="File containing list of users to delete.  One user per line, optionally quoted.")
-    # parser.add_argument("--group_file",help="File containing list of groups to delete.  One user per line, optionally quoted.")
-    # parser.add_argument("-o", "--output_type", default="xls", help="Output type, either xls or json")
-    # parser.add_argument("-f", "--filename", default="users_and_groups", help="Either the name of the json file or root of Excel file names.")
 
     # COMMON INPUTS
     parser = argparse.ArgumentParser(description="TS Comunity Utilities")
     parser.add_argument("-t", "--ts_url", help="URL to ThoughtSpot, e.g. https://myserver")
     parser.add_argument("-u", "--username", default='tsadmin', help="Name of the user to log in as.")
     parser.add_argument("-p", "--password", default='admin', help="Password for login of the user to log in as.")
-    parser.add_argument("--disable_ssl", action="store_true", help="Will ignore SSL errors.", default=False)
+    parser.add_argument("--disable_ssl", action="store_true", help="Will ignore SSL errors.", default=True)
 
     subparser = parser.add_subparsers(description='Sub commands', dest='command')
 
@@ -111,27 +97,23 @@ def parse_args():
 
     # HANDLING GET OPERATIONS AS SEPARATE COMMANDS
     get_ops = subparser.add_parser('get', help='Gets User, User groups')
-    #get_ops.add_argument('-g', '--get', action="store_true", default=False, help='Get details Flag')
     get_ops.add_argument("-o", "--output_type", default="xls", help="Output type, either xls or json")
     get_ops.add_argument("-f", "--filename", default="users_and_groups",
                          help="Either the name of the json file or root of Excel file names.")
 
     # HANDLING SYNC FROM EXCEL OPERATIONS AS SEPARATE COMMANDS
     sync_ops = subparser.add_parser('sync_excel', help='Syncs user and groups from an excel file')
-    #sync_ops.add_argument('-s', '--sync_excel', action="store_true", default=False, help='Sync details flag')
     sync_ops.add_argument("--purge", action="store_true", help="Is set, will delete users not being synced.")
     sync_ops.add_argument("-f", "--filename", help="Either the name of the Excel file name with the users and groups.")
 
     # HANDLING TRANSFER OWNERSHIP OPERATIONS AS SEPARATE COMMANDS
     trans_owner_ops = subparser.add_parser('transfer_ownership', help='Transfers ownership of content from one user to other')
-    #trans_owner_ops.add_argument('-t_o', '--transfer_ownership', action="store_true", default=False, help='Transfer ownership details flag')
     trans_owner_ops.add_argument("--from_user", help="Name of the user to transfer content from.")
     trans_owner_ops.add_argument("--to_user", help="Name of the user to transfer content to.")
-    #does not have disable_ssl
 
     # HANDLING VALIDATE JSON OPERATIONS AS SEPARATE COMMANDS
     validate_ops = subparser.add_parser('validate_json', help='Syncs user and groups from an excel file')
-    validate_ops.add_argument('-v', '--validate_json', action="store_true", default=False, help='Validate JSON details flag')
+    #validate_ops.add_argument('-v', '--validate_json', action="store_true", default=False, help='Validate JSON details flag')
     validate_ops.add_argument("-f", "--filename", help="Name of the json file to be validated.")
 
     args = parser.parse_args()

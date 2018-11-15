@@ -1,12 +1,8 @@
 import sys
 from os.path import abspath, dirname, join
-
-package_path = abspath(dirname(dirname(__file__)))
-sibling_dir = 'sync_ugag'
-
-sys.path.insert(0, join(package_path, sibling_dir))
-
 import unittest
+
+sys.path.insert(0, join(abspath(dirname(dirname(__file__))), 'mgmt'))
 from tsUserGroupApi import UsersAndGroups, User, Group, SyncUserAndGroups, Visibility, Privileges, SetGroupPrivilegesAPI
 
 """

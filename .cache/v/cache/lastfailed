@@ -1,0 +1,6 @@
+{
+  "::TestSyncUsersAndGroups::test_getting_all": true, 
+  "::TestSyncUsersAndGroups::test_syncing_user_and_groups": true, 
+  "::TestSyncUsersAndGroups::test_update_non_shareable": true, 
+  "::TestUGJSONReader::test_read_ugs_from_excel": true
+}
