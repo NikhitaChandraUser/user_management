@@ -25,7 +25,7 @@ This script will retrieve users and groups and write the results to an output fi
 """
 
 
-class GetUsers():
+class GetUsersGroups():
 
     def valid_args(self, args):
         """

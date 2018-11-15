@@ -21,7 +21,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
 
-class SyncExcel():
+class SyncFromExcel():
 
     def get_sheets_and_headers(self):
         header_desc = "Required sheets and columns"
@@ -53,7 +53,7 @@ class SyncExcel():
 
         # Must provide a filename that exists.  This doesn't check that the file is valid.
         if args.filename is None or not os.path.isfile(args.filename):
-            eprint("A valid file path much be specified.")
+            eprint("A valid file path must be specified.")
             is_valid = False
 
         return is_valid

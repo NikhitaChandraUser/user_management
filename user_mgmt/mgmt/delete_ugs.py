@@ -23,7 +23,7 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR TH
 This script will retrieve users and groups and write the results to an output file.
 """
 
-class DelUser():
+class DeleteUserGroups():
 
     def valid_args(self, args):
         """

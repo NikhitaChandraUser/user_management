@@ -26,23 +26,30 @@ def main():
     print(args)
 
     if args.command == 'delete':
-        delete_user = DelUser()
-        if delete_user.valid_args(args):
+        # Deletes users and groups from a TS server
+        delete_users_groups = DeleteUserGroups()
+        if delete_users_groups.valid_args(args):
             sync = SyncUserAndGroups(tsurl=args.ts_url, username=args.username, password=args.password,
                                      disable_ssl=args.disable_ssl)
             if args.users is not None:
-                delete_user.delete_users(args, sync)
+                delete_users_groups.delete_users(args, sync)
             if args.user_file is not None:
-                delete_user.delete_users_from_file(args, sync)
+                delete_users_groups.delete_users_from_file(args, sync)
             if args.groups is not None:
-                delete_user.delete_groups(args, sync)
+                delete_users_groups.delete_groups(args, sync)
             if args.group_file is not None:
-                delete_user.delete_groups_from_file(args, sync)
+                delete_users_groups.delete_groups_from_file(args, sync)
 
     elif args.command == 'get':
+        # Get users and groups from the TS server
+        get_users_groups = GetUsersGroups()
+        if get_users_groups.valid_args(args):
+            get_users_groups.dump_users_and_groups(args)
+
+    elif args.command == 'sync_excel':
         # Synchronize users and groups with ThoughtSpot from a properly formatted Excel file.
-        sync_excel = SyncExcel()
-        if sync_excel.valid_args(args):
+        sync_from_excel = SyncFromExcel()
+        if sync_from_excel.valid_args(args):
             uags = UGXLSReader().read_from_excel(args.filename)
             sync = SyncUserAndGroups(
                 tsurl=args.ts_url,
@@ -54,17 +61,14 @@ def main():
                 users_and_groups=uags, remove_deleted=args.purge
             )
 
-    elif args.command == 'sync_excel':
-        get_users = GetUsers()
-        if get_users.valid_args(args):
-            get_users.dump_users_and_groups(args)
-
     elif args.command == 'transfer_ownership':
+        # Transfers ownership of all content from the from user to the to user
         transfer_ownership = TransferOwnership()
         if transfer_ownership.valid_args(args):
             transfer_ownership.transfer_ownership(args)
 
     elif args.command == 'validate_json':
+        # Validates the structure of a JSON
         validate_json = ValidateJson()
         validate_json.validate(args)
 
@@ -79,9 +83,9 @@ def parse_args():
 
     # COMMON INPUTS
     parser = argparse.ArgumentParser(description="TS Comunity Utilities")
-    parser.add_argument("-t", "--ts_url", help="URL to ThoughtSpot, e.g. https://myserver")
-    parser.add_argument("-u", "--username", default='tsadmin', help="Name of the user to log in as.")
-    parser.add_argument("-p", "--password", default='admin', help="Password for login of the user to log in as.")
+    parser.add_argument("--ts_url", help="URL to ThoughtSpot, e.g. https://myserver")
+    parser.add_argument("--username", default='tsadmin', help="Name of the user to log in as.")
+    parser.add_argument("--password", default='admin', help="Password for login of the user to log in as.")
     parser.add_argument("--disable_ssl", action="store_true", help="Will ignore SSL errors.", default=True)
 
     subparser = parser.add_subparsers(description='Sub commands', dest='command')
@@ -97,14 +101,14 @@ def parse_args():
 
     # HANDLING GET OPERATIONS AS SEPARATE COMMANDS
     get_ops = subparser.add_parser('get', help='Gets User, User groups')
-    get_ops.add_argument("-o", "--output_type", default="xls", help="Output type, either xls or json")
-    get_ops.add_argument("-f", "--filename", default="users_and_groups",
+    get_ops.add_argument("--output_type", default="xls", help="Output type, either xls or json")
+    get_ops.add_argument("--filename", default="users_and_groups",
                          help="Either the name of the json file or root of Excel file names.")
 
     # HANDLING SYNC FROM EXCEL OPERATIONS AS SEPARATE COMMANDS
     sync_ops = subparser.add_parser('sync_excel', help='Syncs user and groups from an excel file')
     sync_ops.add_argument("--purge", action="store_true", help="Is set, will delete users not being synced.")
-    sync_ops.add_argument("-f", "--filename", help="Either the name of the Excel file name with the users and groups.")
+    sync_ops.add_argument("--filename", help="Either the name of the Excel file name with the users and groups.")
 
     # HANDLING TRANSFER OWNERSHIP OPERATIONS AS SEPARATE COMMANDS
     trans_owner_ops = subparser.add_parser('transfer_ownership', help='Transfers ownership of content from one user to other')
@@ -112,9 +116,8 @@ def parse_args():
     trans_owner_ops.add_argument("--to_user", help="Name of the user to transfer content to.")
 
     # HANDLING VALIDATE JSON OPERATIONS AS SEPARATE COMMANDS
-    validate_ops = subparser.add_parser('validate_json', help='Syncs user and groups from an excel file')
-    #validate_ops.add_argument('-v', '--validate_json', action="store_true", default=False, help='Validate JSON details flag')
-    validate_ops.add_argument("-f", "--filename", help="Name of the json file to be validated.")
+    validate_ops = subparser.add_parser('validate_json', help='Validates a JSON')
+    validate_ops.add_argument("--filename", help="Name of the json file to be validated.")
 
     args = parser.parse_args()
     return args
