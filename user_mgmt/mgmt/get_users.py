@@ -60,12 +60,12 @@ class GetUsersGroups():
         )
         all_users_and_groups = sync.get_all_users_and_groups()
 
-        print("writing to %s" % args.filename)
-
         if args.output_type == "json":
-            with open(args.filename, "w") as outfile:
+            print("writing to %s.json" % args.filename)
+            with open(args.filename+'.json', "w") as outfile:
                 outfile.write(all_users_and_groups.to_json())
         else:
+            print("writing to %s.xlsx" % args.filename)
             writer = UGXLSWriter()
             writer.write(
                 users_and_groups=all_users_and_groups, filename=args.filename
