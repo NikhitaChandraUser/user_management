@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 
 import os
-from tsUserGroupApi import eprint
-from tsUserGroupIO import UGXLSReader
+from tsUserGroupApi import eprint, UGXLSReader
 
 """
 Copyright 2018 ThoughtSpot

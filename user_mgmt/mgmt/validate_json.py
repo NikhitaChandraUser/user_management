@@ -25,4 +25,4 @@ class ValidateJson():
             json_data = infile.read()
             obj = json.loads(json_data)
 
-#print("valid JSON")
+        print("valid JSON")

@@ -1,7 +1,6 @@
 #!/usr/bin/python
 
-from tsUserGroupApi import SyncUserAndGroups, eprint
-from tsUserGroupIO import UGXLSWriter
+from tsUserGroupApi import SyncUserAndGroups, eprint, UGXLSWriter
 
 """
 Copyright 2018 ThoughtSpot
