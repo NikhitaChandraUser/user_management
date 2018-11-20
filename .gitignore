@@ -1,5 +1,6 @@
 *.pyc
 .idea/
+user_mgmt/mgmt/*.pyc 
 user_mgmt/mgmt/__init__.pyc 
 user_mgmt/mgmt/delete_ugs.pyc 
 user_mgmt/mgmt/get_users.pyc 
