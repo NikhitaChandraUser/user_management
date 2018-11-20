@@ -1,11 +1,3 @@
 *.pyc
 .idea/
-user_mgmt/mgmt/*.pyc 
-user_mgmt/mgmt/__init__.pyc 
-user_mgmt/mgmt/delete_ugs.pyc 
-user_mgmt/mgmt/get_users.pyc 
-user_mgmt/mgmt/sync_from_excel.pyc 
-user_mgmt/mgmt/transfer_ownership.pyc 
-user_mgmt/mgmt/tsUserGroupApi.pyc 
-user_mgmt/mgmt/tsUserGroupIO.pyc 
-user_mgmt/mgmt/validate_json.pyc
+user_mgmt/mgmt/*.pyc
