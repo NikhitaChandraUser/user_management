@@ -2,6 +2,7 @@
 
 import argparse
 from mgmt import *
+from Logging import *
 
 """
 Copyright 2018 ThoughtSpot
@@ -24,6 +25,8 @@ def main():
 
     args = parse_args()
     print(args)
+
+    CommunityLogging(args.command, args.log)
 
     if args.command == 'delete':
         # Deletes users and groups from a TS server
@@ -87,6 +90,7 @@ def parse_args():
     parser.add_argument("--username", default='tsadmin', help="Name of the user to log in as.")
     parser.add_argument("--password", default='admin', help="Password for login of the user to log in as.")
     parser.add_argument("--disable_ssl", action="store_true", help="Will ignore SSL errors.", default=True)
+    parser.add_argument("--log", choices=['WARN','INFO','DEBUG'], help="Enable Logging if needed", default='INFO')
 
     subparser = parser.add_subparsers(description='Sub commands', dest='command')
 
