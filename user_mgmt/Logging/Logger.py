@@ -10,8 +10,6 @@ class CommunityLogging:
         else:
             self.level = logging.INFO
 
-        print (self.level)
-
         logging.basicConfig(filename=cmd+'.log', level = self.level)
 
     def logMessage(self,msg):
