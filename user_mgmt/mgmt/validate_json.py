@@ -18,7 +18,7 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR TH
 """
 
 
-class ValidateJson():
+class ValidateJson(object):
 
     def validate(self, args):
         with open(args.filename, "r") as infile:

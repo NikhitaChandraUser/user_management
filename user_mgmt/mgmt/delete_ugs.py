@@ -23,7 +23,8 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR TH
 This script will retrieve users and groups and write the results to an output file.
 """
 
-class DeleteUserGroups():
+
+class DeleteUserGroups(object):
 
     def valid_args(self, args):
         """
@@ -44,7 +45,6 @@ class DeleteUserGroups():
 
         return is_valid
 
-
     def delete_users(self, args, sync):
         """
         Deletes the named users.
@@ -55,7 +55,6 @@ class DeleteUserGroups():
         """
         users = [x.strip() for x in args.users.split(",")]
         sync.delete_users(usernames=users)
-
 
     def delete_users_from_file(self, args, sync):
         """
@@ -75,7 +74,6 @@ class DeleteUserGroups():
 
         sync.delete_users(usernames=users)
 
-
     def delete_groups(self, args, sync):
         """
         Deletes the named groups.
@@ -86,7 +84,6 @@ class DeleteUserGroups():
         """
         groups = [x.strip() for x in args.groups.split(",")]
         sync.delete_groups(groupnames=groups)
-
 
     def delete_groups_from_file(self, args, sync):
         """

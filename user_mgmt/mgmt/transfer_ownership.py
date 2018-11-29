@@ -24,7 +24,7 @@ This script will transfer ownership of all objects from one user to another.
 """
 
 
-class TransferOwnership():
+class TransferOwnership(object):
 
     def valid_args(self, args):
         """
@@ -34,12 +34,12 @@ class TransferOwnership():
         :rtype: bool
         """
         is_valid = True
-        if args.ts_url is None or args.username is None or args.password is None or args.from_user is None or args.to_user is None:
+        if args.ts_url is None or args.username is None or args.password is None or args.from_user is None \
+                or args.to_user is None:
             eprint("Missing required parameters.")
             is_valid = False
 
         return is_valid
-
 
     def transfer_ownership(self, args):
         """

@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
-from tsUserGroupApi import SyncUserAndGroups, eprint, UGXLSWriter
+from tsUserGroupApi import SyncUserAndGroups, eprint
+from tsUserGroupApiIO import UGXLSWriter
 
 """
 Copyright 2018 ThoughtSpot
@@ -24,7 +25,7 @@ This script will retrieve users and groups and write the results to an output fi
 """
 
 
-class GetUsersGroups():
+class GetUsersGroups(object):
 
     def valid_args(self, args):
         """
@@ -44,7 +45,6 @@ class GetUsersGroups():
             is_valid = False
 
         return is_valid
-
 
     def dump_users_and_groups(self, args):
         """

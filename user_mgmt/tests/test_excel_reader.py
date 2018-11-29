@@ -1,9 +1,11 @@
 import unittest
 import sys
 from os.path import abspath, dirname, join
+import os
 
 sys.path.insert(0, join(abspath(dirname(dirname(__file__))), 'mgmt'))
-from tsUserGroupApi import UsersAndGroups, User, Group, Visibility, UGXLSReader, UGXLSWriter
+from tsUserGroupApi import UsersAndGroups, User, Group, Visibility
+from tsUserGroupApiIO import UGXLSReader, UGXLSWriter
 
 """
 Copyright 2018 ThoughtSpot

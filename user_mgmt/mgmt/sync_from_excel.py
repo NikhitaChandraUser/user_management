@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 
 import os
-from tsUserGroupApi import eprint, UGXLSReader
+from tsUserGroupApi import eprint
+from tsUserGroupApiIO import UGXLSReader
 
 """
 Copyright 2018 ThoughtSpot
@@ -20,7 +21,8 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
 
-class SyncFromExcel():
+
+class SyncFromExcel(object):
 
     def get_sheets_and_headers(self):
         header_desc = "Required sheets and columns"
