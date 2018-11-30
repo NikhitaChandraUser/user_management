@@ -78,6 +78,22 @@ def main():
     else:
         print ("Invalid command argument")
 
+def get_sheets_and_headers():
+    header_desc = "Required sheets and columns for syncing excel"
+
+    for sheet_name in UGXLSReader.required_sheets:
+        header_desc += "  |  %s:  " % sheet_name
+        col_headers = UGXLSReader.required_columns[sheet_name]
+        first = True
+        for ch in col_headers:
+            if not first:
+                header_desc += ", "
+            else:
+                first = False
+            header_desc += ch
+
+    return header_desc
+
 def parse_args():
     """
     Parses the arguments from the command line.
@@ -85,7 +101,7 @@ def parse_args():
     """
 
     # COMMON INPUTS
-    parser = argparse.ArgumentParser(description="TS Comunity Utilities")
+    parser = argparse.ArgumentParser(description="TS Comunity Utilities", epilog=get_sheets_and_headers())
     parser.add_argument("--ts_url", help="URL to ThoughtSpot, e.g. https://myserver")
     parser.add_argument("--username", default='tsadmin', help="Name of the user to log in as.")
     parser.add_argument("--password", default='admin', help="Password for login of the user to log in as.")
