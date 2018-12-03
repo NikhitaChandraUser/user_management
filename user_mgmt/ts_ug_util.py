@@ -26,7 +26,7 @@ def main():
     args = parse_args()
     print(args)
 
-    CommunityLogging(args.command, args.log)
+    #CommunityLogging(args.command, args.log)
 
     if args.command == 'delete':
         # Deletes users and groups from a TS server
