@@ -8,8 +8,9 @@ echo "STARTING TS UTILITY BASH"
 type=$1
 
 echo $venv
+source $venv
 
-source /Users/rajesh.ravindran/environment/vpyenv27/bin/activate
+#source /Users/rajesh.ravindran/environment/vpyenv27/bin/activate
 
 echo "Python env activated"
 
@@ -21,7 +22,7 @@ case ${type} in
         ;;
 
     get)
-            cmd='python -m user_mgmt.ts_ug_util --ts_url ${url} --username ${username} --password ${password} get -h'
+           cmd='python -m user_mgmt.ts_ug_util --ts_url ${url} --username ${username} --password ${password} get -h'
         ;;
 
     sync_excel )
