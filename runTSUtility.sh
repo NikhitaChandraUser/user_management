@@ -1,7 +1,13 @@
 #!/bin/bash
 
 source: tsUtility_config.ini
+
+
+
+
+
 source ${venv}/activate
+
 
 echo "Python env activated"
 
