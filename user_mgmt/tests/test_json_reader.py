@@ -4,7 +4,8 @@ import os
 from os.path import abspath, dirname, join
 
 sys.path.insert(0, join(abspath(dirname(dirname(__file__))), 'mgmt'))
-from tsUserGroupApi import UsersAndGroups, UGJsonReader, User, Group, Visibility
+from tsUserGroupApi import UGJsonReader
+from tsUserGroupApiDataModel import UsersAndGroups, User, Group, Visibility
 
 """
 Copyright 2018 ThoughtSpot

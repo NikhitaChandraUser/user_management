@@ -3,7 +3,8 @@ from os.path import abspath, dirname, join
 import unittest
 
 sys.path.insert(0, join(abspath(dirname(dirname(__file__))), 'mgmt'))
-from tsUserGroupApi import UsersAndGroups, User, Group, SyncUserAndGroups, Visibility, Privileges, SetGroupPrivilegesAPI
+from tsUserGroupApi import SyncUserAndGroups, Privileges, SetGroupPrivilegesAPI
+from tsUserGroupApiDataModel import UsersAndGroups, User, Group, Visibility
 
 """
 Copyright 2018 ThoughtSpot

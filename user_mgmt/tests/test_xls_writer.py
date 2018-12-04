@@ -3,7 +3,7 @@ from os.path import abspath, dirname, join
 import sys
 
 sys.path.insert(0, join(abspath(dirname(dirname(__file__))), 'mgmt'))
-from tsUserGroupApi import UsersAndGroups, User, Group
+from tsUserGroupApiDataModel import UsersAndGroups, User, Group
 from tsUserGroupApiIO import UGXLSWriter
 
 """
