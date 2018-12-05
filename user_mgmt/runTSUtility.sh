@@ -22,7 +22,7 @@ echo $venv
 echo "====================================================================================================================="
 echo "User Group parser arguments"
 echo "====================================================================================================================="
-cmd='python -m user_mgmt.ts_ug_util -h'
+cmd='python -m ts_ug_util -h'
 ${cmd}
 
 echo $type
@@ -32,9 +32,9 @@ case ${type} in
            echo "====================================================================================================================="
            echo "Delete sub-parser arguments"
            echo "====================================================================================================================="
-           cmd='python -m user_mgmt.ts_ug_util --ts_url '"$url"' --username '"$username"' --password '"$password"' delete -h'
+           cmd='python -m ts_ug_util --ts_url '"$url"' --username '"$username"' --password '"$password"' delete -h'
            ${cmd}
-           cmd='python -m user_mgmt.ts_ug_util --ts_url '"$url"' --username '"$username"' --password '"$password"' delete --users '"$users"''
+           cmd='python -m ts_ug_util --ts_url '"$url"' --username '"$username"' --password '"$password"' delete --users '"$users"''
            ${cmd}
         ;;
 
@@ -42,9 +42,9 @@ case ${type} in
            echo "====================================================================================================================="
            echo "Get sub-parser arguments"
            echo "====================================================================================================================="
-           cmd='python -m user_mgmt.ts_ug_util --ts_url '"$url"' --username '"$username"' --password '"$password"' get -h'
+           cmd='python -m ts_ug_util --ts_url '"$url"' --username '"$username"' --password '"$password"' get -h'
            ${cmd}
-           cmd='python -m user_mgmt.ts_ug_util --ts_url '"$url"' --username '"$username"' --password '"$password"' get --output_type '"$output_type"' --filename '"$filename"''
+           cmd='python -m ts_ug_util --ts_url '"$url"' --username '"$username"' --password '"$password"' get --output_type '"$output_type"' --filename '"$filename"''
            ${cmd}
         ;;
 
@@ -52,9 +52,9 @@ case ${type} in
            echo "====================================================================================================================="
            echo "Sync excel sub-parser arguments"
            echo "====================================================================================================================="
-           cmd='python -m user_mgmt.ts_ug_util --ts_url '"$url"' --username '"$username"' --password '"$password"' sync_excel -h'
+           cmd='python -m ts_ug_util --ts_url '"$url"' --username '"$username"' --password '"$password"' sync_excel -h'
            ${cmd}
-           cmd='python -m user_mgmt.ts_ug_util --ts_url '"$url"' --username '"$username"' --password '"$password"' sync_excel --filename '"$filename"''
+           cmd='python -m ts_ug_util --ts_url '"$url"' --username '"$username"' --password '"$password"' sync_excel --filename '"$filename"''
 
            # TO DO
            #if [ "$purge" = "yes" ]; then
@@ -68,9 +68,9 @@ case ${type} in
            echo "====================================================================================================================="
            echo "Validate Json sub-parser arguments"
            echo "====================================================================================================================="
-           cmd='python -m user_mgmt.ts_ug_util validate_json -h'
+           cmd='python -m ts_ug_util validate_json -h'
            ${cmd}
-           cmd='python -m user_mgmt.ts_ug_util validate_json --filename '"$json_filename"''
+           cmd='python -m ts_ug_util validate_json --filename '"$json_filename"''
            ${cmd}
         ;;
 esac
