@@ -379,8 +379,10 @@ class TestSyncUsersAndGroups(unittest.TestCase):
         auag.add_user(
             User(name="userx", display_name="User X", password="password1")
         )
+        # sync updates
+        sync.sync_users_and_groups(users_and_groups=auag)
         sync.update_user_password(
-            userid="userx", currentpassword="password1", password="password2"
+            userid="userx", currentpassword=TS_PASSWORD, password="password2"
         )
 
     def test_add_and_remove_privilege(self):

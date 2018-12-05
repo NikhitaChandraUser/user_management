@@ -318,7 +318,7 @@ class SyncUserAndGroups(BaseApiInterface):
         }
 
         if self.global_password:
-            params["password"] = json.dumps(self.global_password)
+            params["password"] = self.global_password
 
         response = self.session.post(url, files=params, cookies=self.cookies)
 
@@ -472,7 +472,7 @@ class SyncUserAndGroups(BaseApiInterface):
         Updates the password for a user.
         :param userid: User id for the user to change the password for.
         :type userid: str
-        :param currentpassword: Previous password for the user.
+        :param currentpassword: Password for the logged in user with admin privileges.
         :type currentpassword: str
         :param password: New password for the user.
         :type password: str
@@ -490,7 +490,7 @@ class SyncUserAndGroups(BaseApiInterface):
         params = json.dumps(params)
         print(params)
 
-        return  # TODO add after 4.4 is released.
+        #return  # TODO add after 4.4 is released.
 
         response = self.session.post(url, data=params, cookies=self.cookies)
 
