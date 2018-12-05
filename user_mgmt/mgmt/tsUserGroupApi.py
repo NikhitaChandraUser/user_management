@@ -480,21 +480,14 @@ class SyncUserAndGroups(BaseApiInterface):
 
         url = self.format_url(SyncUserAndGroups.UPDATE_PASSWORD_URL)
         params = {
-            "userid": userid,
-            "currentpassword": {
-                "password": [currentpassword], "empty": "false"
-            },
-            "password": {"password": [password], "empty": "false"},
+            "name": userid,
+            "currentpassword": currentpassword,
+            "password": password,
         }
-
-        params = json.dumps(params)
-        print(params)
-
-        #return  # TODO add after 4.4 is released.
 
         response = self.session.post(url, data=params, cookies=self.cookies)
 
-        if response.status_code == 200:
+        if response.status_code == 204:
             logging.info("Successfully updated password for %s." % userid)
         else:
             logging.error("Failed to update password for %s." % userid)
