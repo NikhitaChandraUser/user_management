@@ -2,7 +2,6 @@
 
 import argparse
 from mgmt import *
-from Logging import *
 
 """
 Copyright 2018 ThoughtSpot
@@ -25,8 +24,6 @@ def main():
 
     args = parse_args()
     print(args)
-
-    #CommunityLogging(args.command, args.log)
 
     if args.command == 'delete':
         # Deletes users and groups from a TS server
