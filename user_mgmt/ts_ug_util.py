@@ -105,7 +105,7 @@ def parse_args():
     parser.add_argument("--ts_url", help="URL to ThoughtSpot, e.g. https://myserver")
     parser.add_argument("--username", default='tsadmin', help="Name of the user to log in as.")
     parser.add_argument("--password", default='admin', help="Password for login of the user to log in as.")
-    parser.add_argument("--disable_ssl", action="store_true", help="Will ignore SSL errors.", default=True)
+    parser.add_argument("--disable_ssl", action="store_true", help="Will ignore SSL errors.", default=False)
     #parser.add_argument("--log", choices=['WARN','INFO','DEBUG'], help="Enable Logging if needed", default='INFO')
 
     subparser = parser.add_subparsers(description='Sub commands', dest='command')
