@@ -1,6 +1,4 @@
 requests
 argparse
 setuptools
--e git+https://github.com/thoughtspot/community-tools.git@master#egg=user_management
-
-
+git+https://github.com/NikhitaChandraUser/user_management
