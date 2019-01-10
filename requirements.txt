@@ -1,4 +1,3 @@
 requests
 argparse
 setuptools
-git+https://github.com/NikhitaChandraUser/user_management
